@@ -50,11 +50,9 @@ public class Aims {
         System.out.println("1. Filter media in cart");
         System.out.println("2. Sort media in cart");
         System.out.println("3. Remove media from cart");
-        System.out.println("4. Play a media");
-        System.out.println("5. Place order");
         System.out.println("0. Back");
         System.out.println("--------------------------------");
-        System.out.println("Please choose a number: 0-1-2-3-4-5");
+        System.out.println("Please choose a number: 0-1-2-3");
     }
     public static void updateStore(){
         System.out.println("Options:");
@@ -82,7 +80,6 @@ public class Aims {
                     seeCurrentCart();
                     break;
                 case 0:
-                    System.out.println("Exiting...");
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -120,7 +117,7 @@ public class Aims {
 
     private static void seeMediaDetails() {
         System.out.println("Enter title of the media:");
-        scanner.nextLine(); // Consume newline character
+        scanner.nextLine();
         String title = scanner.nextLine();
         Media media = store.searchMedia(title);
         if (media != null) {
@@ -141,8 +138,6 @@ public class Aims {
                         }
                         break;
                     case 0:
-                        System.out.println("Back to the previous menu.");
-
                         break;
                     default:
                         System.out.println("Invalid choice. Please try again.");
@@ -242,14 +237,11 @@ public class Aims {
                     cart.filterByTitle(titleToFilter);
                     break;
                 case 2:
-                    System.out.println("Sort by:\n1. Title\n2. Cost");
+                    System.out.println("Sort by:\n1. Title");
                     int sortChoice = scanner.nextInt();
                     switch (sortChoice) {
                         case 1:
                             cart.sortByTitle();
-                            break;
-                        case 2:
-                            cart.sortByCost();
                             break;
                         default:
                             System.out.println("Invalid choice. Sorting by title by default.");
@@ -259,7 +251,7 @@ public class Aims {
                     break;
                 case 3:
                     System.out.println("Enter the title to remove from cart:");
-                    scanner.nextLine(); // consume newline character
+                    scanner.nextLine();
                     String titleToRemove = scanner.nextLine();
                     Media mediaToRemove = cart.searchMedia(titleToRemove);
                     if (mediaToRemove != null) {
@@ -267,21 +259,6 @@ public class Aims {
                     } else {
                         System.out.println("Item not found in cart.");
                     }
-                    break;
-                case 4:
-                    System.out.println("Enter the title to play:");
-                    scanner.nextLine(); // consume newline character
-                    String titleToPlay = scanner.nextLine();
-                    Media mediaToPlay = cart.searchMedia(titleToPlay);
-                    if (mediaToPlay != null) {
-                        cart.playMedia(mediaToPlay);
-                    } else {
-                        System.out.println("Item not found in cart.");
-                    }
-                    break;
-                case 5:
-                    cart.placeOrder();
-                    System.out.println("Thank you for your order.");
                     break;
                 case 0:
                     break;
