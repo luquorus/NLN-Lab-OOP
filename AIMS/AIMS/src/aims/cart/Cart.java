@@ -11,7 +11,6 @@ public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
     private ArrayList<Media> itemsOrdered = new ArrayList<>();
 
-    // Phương thức thêm media vào giỏ hàng
     public void addMedia(Media media){
         if(itemsOrdered.size() >= MAX_NUMBERS_ORDERED){
             System.out.println("The cart is full. Please remove some items to continue.");
@@ -25,7 +24,6 @@ public class Cart {
         }
     }
 
-    // Phương thức xóa media khỏi giỏ hàng
     public void removeMedia(Media media){
         if(itemsOrdered.remove(media)){
             System.out.println("The media has been removed from the cart");
@@ -34,7 +32,6 @@ public class Cart {
         }
     }
 
-    // Phương thức tính tổng chi phí
     public double totalCost(){
         double total = 0;
         for(Media media : itemsOrdered){
@@ -43,7 +40,6 @@ public class Cart {
         return total;
     }
 
-    // Phương thức hiển thị danh sách các mặt hàng đã đặt hàng
     public void orderedItems(){
         if(itemsOrdered.isEmpty()){
             System.out.println("There are no items in the cart.");
@@ -55,11 +51,10 @@ public class Cart {
                 itemsOrdered.get(i).toStringItem(i + 1);
             }
             System.out.println("**************************************************");
-            System.out.println("Total Cost is: " + totalCost() + "$");
+            System.out.println("Total Cost is: " + "$" + totalCost());
         }
     }
 
-    // Phương thức tìm kiếm media theo tiêu đề
     public void searchByTitle(String title){
         if(itemsOrdered.isEmpty()){
             System.out.println("There are no items in the cart.");
@@ -79,7 +74,6 @@ public class Cart {
         }
     }
 
-    // Phương thức đếm số lượng đĩa DVD trong giỏ hàng
     public int numberDVD(){
         int cnt = 0 ;
         for(Media item : itemsOrdered){
@@ -90,7 +84,6 @@ public class Cart {
         return cnt;
     }
 
-    // Phương thức lọc các phần tử trong giỏ hàng dựa trên tiêu đề
     public void filterByTitle(String title) {
         ArrayList<Media> filteredList = new ArrayList<>();
         for (Media media : itemsOrdered) {
@@ -108,7 +101,6 @@ public class Cart {
         }
     }
 
-    // Phương thức sắp xếp các phần tử trong giỏ hàng theo tiêu đề
     public void sortByTitle() {
         Collections.sort(itemsOrdered, Comparator.comparing(Media::getTitle));
         System.out.println("Items sorted by title:");
@@ -117,30 +109,7 @@ public class Cart {
         }
     }
 
-    // Phương thức sắp xếp các phần tử trong giỏ hàng theo giá
-    public void sortByCost() {
-        Collections.sort(itemsOrdered, Comparator.comparing(Media::getCost));
-        System.out.println("Items sorted by cost:");
-        for (int i = 0; i < itemsOrdered.size(); i++) {
-            itemsOrdered.get(i).toStringItem(i + 1);
-        }
-    }
 
-    // Phương thức chơi media
-    public void playMedia(Media media) {
-        if (media instanceof DigitalVideoDisc) {
-            DigitalVideoDisc dvd = (DigitalVideoDisc) media;
-            dvd.play();
-        } else {
-            System.out.println("Cannot play this type of media.");
-        }
-    }
-
-    // Phương thức đặt hàng
-    public void placeOrder() {
-        System.out.println("An order has been created.");
-        itemsOrdered.clear(); // Xóa giỏ hàng sau khi đặt hàng
-    }
     public Media searchMedia(String title) {
         for (Media media : itemsOrdered) {
             if (media.getTitle().equalsIgnoreCase(title)) {
