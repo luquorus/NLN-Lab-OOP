@@ -19,7 +19,7 @@ public class CartTest{
         Book book1 = new Book("Java for Beginners", "Education", 123, 1244);
         anOrder.addMedia(book1);
 
-        CompactDisc cd1 = new CompactDisc("Best of 80s", "Music", "Various Artists","Duong", 1223, 153);
+        CompactDisc cd1 = new CompactDisc("New Year", "Music", "Various Artists","No", 1223, 153);
         anOrder.addMedia(cd1);
 
         anOrder.orderedItems();
